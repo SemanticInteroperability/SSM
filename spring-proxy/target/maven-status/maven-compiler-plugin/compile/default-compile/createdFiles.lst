@@ -1,0 +1,5 @@
+com\atguigu\spring\proxy\Calculator.class
+com\atguigu\spring\proxy\impl\CalculatorImpl.class
+com\atguigu\spring\proxy\ProxyFactory$1.class
+com\atguigu\spring\proxy\ProxyFactory.class
+com\atguigu\spring\proxy\CalculatorStaticProxy.class

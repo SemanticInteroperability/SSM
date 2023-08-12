@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//com.atguigu.mybatis.org//DTD Mapper 3.0//EN"
+        "http://com.atguigu.mybatis.org/dtd/com.atguigu.mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.com.atguigu.mybatis.mapper.UserMapper">
+
+    <!--getUserByName(String uname)-->
+    <select id="getUserByName" resultType="User">
+       <!--
+            #{}表示占位符
+             select * from t_user where uname=#{uname}
+            '${}' 表示字符串拼接符,里面最好写参数名
+       -->
+        select * from t_user where uname='${uname}'
+    </select>
+
+<!--    User checkLogin(String uname,String pwd)-->
+    <select id="checkLogin" resultType="User">
+        <!--select * from t_user where uname='${arg0}' and pwd='${arg1}'-->
+
+        select * from t_user where uname=#{param1} and pwd=#{param2}
+    </select>
+
+<!--    checkLoginByMap(Map<String,Object> map);-->
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where uname=#{uname} and pwd=#{pwd}
+    </select>
+
+<!--    insertUser(User user);-->
+    <insert id="insertUser">
+        insert into t_user(id,uname,pwd,email,role) values(0,#{uname},#{pwd},#{email},0)
+    </insert>
+
+<!--    checkLoginByParam(@Param("uname") String uname, @Param("pwd")String pwd)-->
+    <select id="checkLoginByParam" resultType="User">
+        select * from t_user where uname=#{username} and pwd=#{password}
+    </select>
+</mapper>

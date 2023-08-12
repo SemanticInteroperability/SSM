@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="helloworld" class="com.atguigu.spring.pojo.HelloWorld"></bean>
+
+<!--    <bean id="stu" class="com.atguigu.spring.pojo.Student"></bean>-->
+
+<!--    <bean id="stu2" class="com.atguigu.spring.pojo.Student">-->
+<!--        <property name="name" value="fmt"></property>-->
+<!--        <property name="studentId" value="1001"></property>-->
+<!--        <property name="age" value="18"></property>-->
+<!--        <property name="gender" value="女"></property>-->
+<!--    </bean>-->
+
+
+
+<!--    <bean id="clazzOne" class="com.atguigu.spring.pojo.Clazz">-->
+<!--        <property name="cid" value="01"></property>-->
+<!--        <property name="cname" value="清北班"></property>-->
+<!--&lt;!&ndash;        <property name="students">&ndash;&gt;-->
+<!--&lt;!&ndash;            <list>&ndash;&gt;-->
+<!--&lt;!&ndash;                <ref bean="stu"></ref>&ndash;&gt;-->
+<!--&lt;!&ndash;                <ref bean="stu2"></ref>&ndash;&gt;-->
+<!--&lt;!&ndash;                <ref bean="stu3"></ref>&ndash;&gt;-->
+<!--&lt;!&ndash;            </list>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--        <property name="students" ref="studentList"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="stu3" class="com.atguigu.spring.pojo.Student">-->
+<!--        <property name="name" value="fmt"></property>-->
+<!--        <property name="studentId" value="1001"></property>-->
+<!--        <property name="age" value="18"></property>-->
+<!--        <property name="gender" value="女"></property>-->
+<!--        &lt;!&ndash;外部bean&ndash;&gt;-->
+<!--        <property name="clazz" ref="clazzOne"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="stu4" class="com.atguigu.spring.pojo.Student">-->
+<!--        <property name="name" value="fmt"></property>-->
+<!--        <property name="studentId" value="1001"></property>-->
+<!--        <property name="age" value="18"></property>-->
+<!--        <property name="gender" value="女"></property>-->
+<!--        <property name="clazz" >-->
+<!--            &lt;!&ndash;内部bean 只能在当前bean的内部使用，无法通过ioc容器获取&ndash;&gt;-->
+<!--           <bean id="clazzInner" class="com.atguigu.spring.pojo.Clazz">-->
+<!--               <property name="cid" value="222"></property>-->
+<!--               <property name="cname" value="复旦班"></property>-->
+<!--           </bean>-->
+<!--        </property>-->
+<!--        <property name="teacherMap" ref="tMap">-->
+
+<!--&lt;!&ndash;            <map>&ndash;&gt;-->
+<!--&lt;!&ndash;                <entry key="10086" value-ref="TeacherOne"></entry>&ndash;&gt;-->
+<!--&lt;!&ndash;                <entry key="10087" value-ref="TeacherTwo"></entry>&ndash;&gt;-->
+<!--&lt;!&ndash;            </map>&ndash;&gt;-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="TeacherOne" class="com.atguigu.spring.pojo.Teacher">-->
+<!--        <property name="tid" value="10086"></property>-->
+<!--        <property name="tname" value="刘老师"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="TeacherTwo" class="com.atguigu.spring.pojo.Teacher">-->
+<!--        <property name="tid" value="10087"></property>-->
+<!--        <property name="tname" value="冯老师"></property>-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash;配置一个集合类型的bean，需要使用util的约束&ndash;&gt;-->
+<!--    <util:list id="studentList">-->
+<!--        <ref bean="stu"></ref>-->
+<!--        <ref bean="stu2"></ref>-->
+<!--        <ref bean="stu4"></ref>-->
+<!--    </util:list>-->
+
+<!--    <util:map id="tMap">-->
+<!--        <entry key="10086" value-ref="TeacherOne"></entry>-->
+<!--        <entry key="10087" value-ref="TeacherTwo"></entry>-->
+<!--    </util:map>-->
+
+
+
+
+<!-- 将MyBeanFactory内部的静态方法 userDao() 的返回值，再以指定的beanName userDaO1 ，放入容器中-->
+<!--    <bean id="userDao1" class="com.atguigu.spring.factory.MyBeanFactory" factory-method="userDao" lazy-init="true"></bean>-->
+
+<!--&lt;!&ndash;将UserFactoryBean内部的getObject()方法的返回值，再以指定的beanName userDao3 放入容器中  &ndash;&gt;-->
+<!--    <bean id="userDao3" class="com.atguigu.spring.factory.UserFactoryBean"></bean>-->
+
+<!--&lt;!&ndash; 配置日期对象，采用 有参构造+实例工厂方式  &ndash;&gt;-->
+<!--    <bean id="simpleDateFormat" class="java.text.SimpleDateFormat">-->
+<!--        <constructor-arg name="pattern" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>-->
+<!--    </bean>-->
+<!--    <bean id="date" factory-bean="simpleDateFormat" factory-method="parse">-->
+<!--        <constructor-arg name="source" value="2023-07-19 22:22:22"></constructor-arg>-->
+<!--    </bean>-->
+
+<!--  sqlSessionFactory 的bean  -->
+<!-- 静态工厂方法   -->
+<!--    <bean id="inputStream" class="org.apache.ibatis.io.Resources" factory-method="getResourceAsStream">-->
+<!--        <constructor-arg name="resource" value="mybatis-config.xml"></constructor-arg>-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash;无参构造实例化&ndash;&gt;-->
+<!--    <bean id="builder" class="org.apache.ibatis.session.SqlSessionFactoryBuilder"></bean>-->
+
+<!--&lt;!&ndash;实例工厂方法&ndash;&gt;-->
+<!--    <bean id="sqlSessionFactory" factory-bean="builder" factory-method="build">-->
+<!--        <constructor-arg name="inputStream" ref="inputStream"></constructor-arg>-->
+<!--    </bean>-->
+
+<!--    <bean id="postProcessor" class="com.atguigu.spring.processor.MyBeanFactoryPostProcessor"></bean>-->
+
+<!--    <bean id="postProcessor1" class="com.atguigu.spring.processor.MyBeanFactoryPostProcessor1"></bean>-->
+
+<!--    <bean id="myComponentBean" class="com.atguigu.spring.processor.MyComponentBeanFactoryPostProcessor"></bean>-->
+
+<!--    <bean id="beanPostProcessor" class="com.atguigu.spring.process.MyBeanPostProcessor"></bean>-->
+
+    <bean id="userDao" class="com.atguigu.spring.dao.impl.UserDaoImpl"></bean>
+
+    <bean id="userService" class="com.atguigu.spring.sercvice.impl.UserServiceImpl" autowire="byType" lazy-init="true">
+                <property name="name" value="lh"></property>
+                <property name="userMapper"  ref="userMapper"></property>
+    </bean>
+
+    <bean id="logBeanPostProcessor" class="com.atguigu.spring.processor.TimeLogBeanPostProcessor"></bean>
+
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+<!-- 配置SqlSessionFactoryBean ，作用是将SqlSessionFactoryBean存储到spring容器-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!-- 扫描指定的包，产生Mapper对象存储到spring容器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="mybatis.mapper"></property>
+    </bean>
+
+</beans>

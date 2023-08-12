@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.ssm.mapper.EmpMapper">
+
+<!--    List<Emp> getAllEmpList();-->
+    <select id="getAllEmpList" resultType="Emp">
+<!--分页拦截器直接在SQL语句后面加limit 1,4的,所以此时sql语句后面不能加;-->
+        select * from emp
+    </select>
+
+
+
+</mapper>

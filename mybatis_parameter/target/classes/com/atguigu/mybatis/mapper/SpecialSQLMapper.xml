@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//com.atguigu.mybatis.org//DTD Mapper 3.0//EN"
+        "http://com.atguigu.mybatis.org/dtd/com.atguigu.mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.com.atguigu.mybatis.mapper.SpecialSQLMapper">
+<!--    List<User> getUserByLike(@Param("mohu") String mohu);-->
+
+    <select id="getUserByLike" resultType="User">
+<!--
+    select * from t_user where uname like '%#{mohu}%';
+    select * from t_user where uname like '%?%';占位符问号在单引号里，被当作字符串中的一部分，不能被当作占位符解析
+
+    select * from t_user where uname like '%${mohu}%';
+    select * from t_user where uname like concat('%',#{mohu},'%');
+-->
+
+        select * from t_user where uname like "%"#{mohu}"%"
+    </select>
+
+<!--    void deleteMoreUser(@Param("ids") String ids);-->
+    <select id="deleteMoreUser">
+        delete from t_user where id in (${ids})
+    </select>
+<!--    List<User> getUserList(@Param("tableName") String tableName);-->
+    <select id="getUserList" resultType="User">
+        select * from ${tableName}
+    </select>
+
+<!--    void insertUser(User user);
+        useGeneratedKeys:表示当前添加功能使用自增的主键
+        keyProperty：将添加的数据的自增主键为实体类类型的参数的属性赋值
+-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values (0,#{uname},#{pwd},#{email},0)
+    </insert>
+
+</mapper>

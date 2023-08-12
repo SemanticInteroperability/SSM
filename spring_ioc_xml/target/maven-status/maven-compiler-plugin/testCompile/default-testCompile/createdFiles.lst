@@ -1,0 +1,3 @@
+com\atguigu\spring\test\ApplicationContextTest.class
+com\atguigu\spring\test\IOCByAnnotationTest.class
+com\atguigu\spring\test\AnnotationConfigApplicationContextTest.class

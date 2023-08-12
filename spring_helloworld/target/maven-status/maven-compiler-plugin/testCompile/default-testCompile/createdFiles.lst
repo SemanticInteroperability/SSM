@@ -1,0 +1,8 @@
+com\atguigu\spring\test\ApplicationContextTest.class
+com\atguigu\spring\test\HelloWorldTest.class
+com\atguigu\spring\test\FactoryBeanTest.class
+com\atguigu\spring\test\DataSourceTest.class
+com\atguigu\spring\test\LifeCycleTest.class
+com\atguigu\spring\test\BeanFactoryTest.class
+com\atguigu\spring\test\AutowireByXMLTest.class
+com\atguigu\spring\test\ScopeTest.class

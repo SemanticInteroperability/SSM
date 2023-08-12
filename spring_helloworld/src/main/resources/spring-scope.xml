@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+    scope:设置bean的作用域
+    singleton(单例):表示获取该bean所对应的对象都是同一个
+    prototype(多例):表示获取该bean所对应的对象都不是同一个
+-->
+    <bean id="stu" class="com.atguigu.spring.pojo.Student" scope="singleton">
+        <property name="name" value="fmt"></property>
+        <property name="studentId" value="1001"></property>
+        <property name="age" value="18"></property>
+        <property name="gender" value="女"></property>
+    </bean>
+</beans>
